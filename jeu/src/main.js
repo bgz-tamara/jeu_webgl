@@ -62,7 +62,6 @@ document.querySelectorAll('.cubeOption').forEach(opt => {
     opt.addEventListener('click', () => {
         document.querySelectorAll('.cubeOption').forEach(o => o.classList.remove('selected'));
         opt.classList.add('selected');
-        console.log("couleur du cube dans le sdata : " + opt.dataset.color)
         game.color = opt.dataset.color;
     });
 });
@@ -157,10 +156,10 @@ function enableButtons() {
 
 function nextTurn() {
     game.turn++;
-    game.size = 15 + (game.turn - 1) * 5;
+    game.size = 15 + (game.turn - 1) * 8;
     game.bgColor = [0.53, 0.81, 0.92];
     
-    console.log('Après nextTurn - Turn:', game.turn, 'Energy:', game.energy, 'Fun:', game.fun);
+    console.log('Tour n°', game.turn, ' => Energie :', game.energy, 'Fun :', game.fun);
     if (game.turn > game.maxTurns) {
         endGame(true);
         return;
@@ -176,30 +175,31 @@ function nextTurn() {
 }
 
 function updateMessage() {
-    let msg = `${game.name}: `;
+    let msg = `${game.name} : `;
     if (game.energy <= 4 && game.fun <= 4) {
-        msg += "J'ai faim ET je m'ennuie! 😢";
+        msg += "J'ai faim ET je m'ennuie ! 😢";
     } else if (game.energy <= 4) {
         msg += "J'ai faim! 🍔";
     } else if (game.fun <= 4) {
-        msg += "Je m'ennuie! 😴";
+        msg += "Je m'ennuie ! 😴";
     } else {
-        msg += "Ça va! 😊";
+        msg += "Ça va, tout va bien aujourd'hui ! 😊";
     }
     document.getElementById('message').textContent = msg;
 }
 
 function endGame(won) {
+    const message = '';
     const title = won ? '🎉 Félicitations monsieur!' : '💔 C\'est perdu, vous l\'avez tué monsieur...';
     if (won) {
-        `${game.name} a grandi et est heureux !`
+        message =`${game.name} a bien grandi et est heureux POUR LA VIE !`;
     } else {
         if (game.energy <= 4 && game.fun <= 4) {
-                `${game.name} est trop triste et affamé...😢`;
+                message = `${game.name} est trop triste et affamé...😢`;
             } else if (game.energy <= 4) {
-                `${game.name} est trop affamé...🍔😢`;
+                message = `${game.name} est trop affamé...🍔😢`;
             } else {
-                `${game.name} est trop triste...😢`;
+                message = `${game.name} est trop triste...😢`;
             } 
     }
     
