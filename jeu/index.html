@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamaragoshi</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+
+    <script src="../common/dist/geometrie.js"></script>
+    <script type="text/javascript" src="../common/lib/util.js"></script>
+    <script type="text/javascript" src="../common/lib/webgl-utils.js"></script>
+    <script type="text/javascript" src="./src/main.js" defer></script>
+
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    
+    <div id="gameUI">
+        <div id="turnCounter">Jour: 1/10</div>
+        <div id="message"></div>
+        <div id="buttons">
+            <button id="feedBtn">🍔 Nourrir</button>
+            <button id="playBtn">🎮 Jouer</button>
+        </div>
+    </div>
+    
+    <div id="selectionScreen">
+        <h1>Bienvenue Monsieur dans Tamaragoshi !</h1>
+        <h2>C'est un genre de Tamagoshi mais avec des cubes...</h2>
+        <h1> Enjoy :)</h1>        
+        <h1> ____</h1>
+        <h2>Choisissez votre cube :</h2>
+        <div id="cubeSelection">
+            <div class="cubeOption" data-color="orange" style="background-color: #ff9933;"></div>
+            <div class="cubeOption" data-color="green" style="background-color: #2DF5F5;"></div>
+            <div class="cubeOption" data-color="pink" style="background-color: #ff3399;"></div>
+        </div>
+
+        <h2>Choisissez un nom pour votre cube :</h2>
+        <input type="text" id="nameInput" placeholder="Saisissez un nom " maxlength="15">
+        <button id="startBtn">Lancer une partie</button>
+    </div>
+    
+    <div id="gameOver">
+        <h1 id="gameOverTitle"></h1>
+        <p id="gameOverMessage"></p>
+        <button id="restartBtn">🏠 Retour à l'accueil</button>
+    </div>
+
+</body>
+
+</html>
